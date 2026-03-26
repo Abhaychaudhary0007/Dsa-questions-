@@ -1,11 +1,21 @@
 class Solution {
-    public int fib(int n) {
-        if(n<=1){
+    static int []dp;
+    public int fibo(int n){
+         if(n<=1){
             return n;
         }
-        else{
-            return fib(n-1)+fib(n-2);
+        if(dp[n]!=0){
+            return dp[n];
         }
+
+        else{
+            return dp[n]= fibo(n-1)+fibo(n-2);
+        }
+
+    }
+    public int fib(int n) {
+       dp=new int [n+1];
+       return fibo(n);
         
     }
 }
