@@ -1,17 +1,14 @@
 class Solution {
-    static int[][] dp;
-    public int helper(int m, int n,int[][]dp){
-        if(m==1||n==1){
-            return 1;
-        }
-            if(dp[m][n]!=0){
-                return dp[m][n];
-            }
-            else dp[m][n]=helper(m-1,n,dp)+helper(m,n-1,dp);
-            return dp[m][n];
+    public int paths(int row,int col,int lrow,int lcol,int [][] dp){
+        if(row==lrow && col==lcol) return 1;
+        if(row>lrow || col>lcol) return 0;
+        if(dp[row][col]!=0) return dp[row][col];
+        int right=paths(row,col+1,lrow,lcol,dp);
+        int down=paths(row+1,col,lrow,lcol,dp);
+        return dp[row][col]=right+down;
     }
     public int uniquePaths(int m, int n) {
-        dp=new int[m+1][n+1];
-        return helper(m,n,dp);
+         int[][] dp=new int[m+1][n+1];
+        return paths(0,0,m-1,n-1,dp);
     }
 }
