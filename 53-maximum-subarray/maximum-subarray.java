@@ -9,7 +9,7 @@ class Solution {
         for(int i=1;i<n;i++){
             if(nums[i]>sum +nums[i]){
                 sum=nums[i];
-                temp=i+1;
+                temp=i;
             }
             else{
                 sum+=nums[i];
