@@ -16,8 +16,9 @@ class Solution {
                     set.remove(s.charAt(i));
                     i++;
                 }
-                 set.remove(s.charAt(i));
+              //   set.remove(s.charAt(i));
                     i++;
+                    j++;
                 
             }
         }
