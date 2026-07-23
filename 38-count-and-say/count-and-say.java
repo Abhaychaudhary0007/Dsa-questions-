@@ -4,7 +4,7 @@ class Solution {
             return "1";
         }
         String s=countAndSay(n-1);
-        String ans="";
+    StringBuilder ans =new StringBuilder();
 
         int j=0; int i=0;
         while(j<s.length()){
@@ -12,16 +12,16 @@ class Solution {
 
             else{
                 int fre=j-i;
-                ans+=fre;
-                ans+=s.charAt(i);
+                ans.append(fre);
+                ans.append(s.charAt(i));
                 i=j;
             }
         }
        int fre=j-i;
-          ans+=fre;
-                ans+=s.charAt(i);
+          ans.append(fre);
+                ans.append(s.charAt(i));
 
-                return ans;
+                return ans.toString();
         
     }
 }
