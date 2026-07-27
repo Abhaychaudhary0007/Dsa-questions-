@@ -13,7 +13,7 @@ class Solution {
     public ListNode sortList(ListNode head) {
 
         // Base Case
-        if (head == null || head.next == null)
+        if ( head==null || head.next == null)
             return head;
 
         // Find middle
