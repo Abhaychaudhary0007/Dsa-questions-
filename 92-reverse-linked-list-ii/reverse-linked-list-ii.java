@@ -36,7 +36,7 @@ class Solution {
          tail1=temp;
          head2=temp.next;
 
-        for(int i=1;i<=r-l+1;i++){
+        for(int i=1;i<r-l+2;i++){
              temp=temp.next;
              }
             tail2=temp;
