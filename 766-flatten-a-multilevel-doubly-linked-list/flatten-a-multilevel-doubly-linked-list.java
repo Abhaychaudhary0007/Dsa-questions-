@@ -9,45 +9,29 @@ class Node {
 */
 
 class Solution {
-
     public Node flatten(Node head) {
-        if (head == null) return null;
-        dfs(head);
-        return head;
-    }
+        if(head==null) return head;
+        Node curr=head;
+        while(curr!=null){
+           if(curr.child==null){
+            curr=curr.next;
+           }
+           else{
+            Node fwd=curr.next;
+            Node c=flatten(curr.child);
+            curr.child=null;
+            curr.next=c;
+            c.prev=curr;
 
-    // Returns the tail of the flattened list
-    private Node dfs(Node head) {
-        Node curr = head;
-        Node last = null;
-
-        while (curr != null) {
-            Node next = curr.next;
-
-            if (curr.child != null) {
-                Node childHead = curr.child;
-                Node childTail = dfs(childHead);
-
-                // Connect current with child
-                curr.next = childHead;
-                childHead.prev = curr;
-                curr.child = null;
-
-                // Connect child tail with next
-                if (next != null) {
-                    childTail.next = next;
-                    next.prev = childTail;
-                }
-
-                last = childTail;
-                curr = childTail;
-            } else {
-                last = curr;
+            Node temp=c;
+            while(temp.next!=null){
+                temp=temp.next;
             }
-
-            curr = curr.next;
+            temp.next=fwd;
+            if(fwd!=null)fwd.prev=temp;
+            curr=fwd;
+           }
         }
-
-        return last;
+        return head;
     }
 }
