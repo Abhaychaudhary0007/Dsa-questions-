@@ -50,9 +50,9 @@ class Solution {
             
         }
         if(first==-1 || first==last) return ans;
-        int max=last-first;
+        //int max=last-first;
         ans[0]=minsub;
-        ans[1]=max;
+        ans[1]=last-first;
 
         return ans;
     }
