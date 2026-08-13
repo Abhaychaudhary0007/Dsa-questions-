@@ -10,9 +10,9 @@
  */
 class Solution {
     public ListNode removeNodes(ListNode head) {
-        ListNode dummy=new ListNode(-1);
+      
         ListNode temp=head;
-        head=dummy;
+      
         Stack<Integer> st=new Stack<>();
         
         while(temp!=null){
@@ -22,26 +22,19 @@ class Solution {
             st.push(temp.val);
             temp=temp.next;
         }
-
+             head=null;
          while(st.size()!=0){
-            head.next=new ListNode(st.pop());
-            head=head.next;
+           ListNode t =new ListNode(st.pop());
+            if(head==null){
+                head=t;
+            }
+            else {
+                t.next=head;
+                head=t;
+            }
          }
-           ListNode prev = null;
+       
 
-        ListNode curr = dummy.next;
-
-        while (curr != null) {
-
-            ListNode next = curr.next;
-
-            curr.next = prev;
-
-            prev = curr;
-
-            curr = next;
-
-        }
-         return prev;
+       return head;
     }
 }
