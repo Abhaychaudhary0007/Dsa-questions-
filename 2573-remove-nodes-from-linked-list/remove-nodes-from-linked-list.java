@@ -13,28 +13,24 @@ class Solution {
       
         ListNode temp=head;
       
-        Stack<Integer> st=new Stack<>();
+        Stack<ListNode> st=new Stack<>();
         
         while(temp!=null){
-             while (!st.isEmpty() && st.peek() < temp.val) {
+             while (!st.isEmpty() && st.peek().val < temp.val) {
                     st.pop();
                       }
-            st.push(temp.val);
+            st.push(temp);
             temp=temp.next;
         }
-             head=null;
+            
          while(st.size()!=0){
-           ListNode t =new ListNode(st.pop());
-            if(head==null){
-                head=t;
+           ListNode top =st.pop();
+           top.next = temp;
+            temp = top;
             }
-            else {
-                t.next=head;
-                head=t;
-            }
-         }
+         
        
 
-       return head;
+       return temp;
     }
 }
