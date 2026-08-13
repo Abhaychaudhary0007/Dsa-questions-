@@ -16,18 +16,10 @@ class Solution {
         Stack<Integer> st=new Stack<>();
         
         while(temp!=null){
-            if(st.isEmpty()){
-            st.push(temp.val);}
-            else{
-                if(st.peek()<temp.val){
-                    while(!st.isEmpty() &&  st.peek()<temp.val){
-                    st.pop();}
-                    st.push(temp.val);
-                }
-                else {
-                    st.push(temp.val);
-                }
-            }
+             while (!st.isEmpty() && st.peek() < temp.val) {
+                    st.pop();
+                      }
+            st.push(temp.val);
             temp=temp.next;
         }
 
